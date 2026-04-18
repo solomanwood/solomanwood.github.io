@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disclaimer — Solomon Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #111118;
+      --card:     #16161e;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #c8a96e;
+      --accent2:  #6e9ec8;
+      --text:     #e8e6e0;
+      --muted:    #7a7870;
+      --white:    #ffffff;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --r:        12px;
+      --r-lg:     20px;
+      --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.75; }
+
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* ── PAGE HERO ───────────────────────────────────── */
+    .page-hero {
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent);  top: -100px; right: -80px; }
+    .blob-2 { width: 400px; height: 400px; background: var(--accent2); bottom: -100px; left: -100px; }
+
+    .page-hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.7s var(--ease) both;
+    }
+    .page-hero h1 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--accent); }
+    .page-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .meta-item { font-size: 13px; color: var(--muted); }
+    .meta-dot  { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+    /* ── LAYOUT ──────────────────────────────────────── */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 64px;
+      padding: 72px 0 120px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ─────────────────────────────────────── */
+    .sidebar { position: sticky; top: 90px; }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc-list li a {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: var(--r);
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .toc-list li a:hover,
+    .toc-list li a.active {
+      color: var(--accent);
+      background: rgba(200,169,110,0.06);
+      border-left-color: var(--accent);
+    }
+
+    .sidebar-note {
+      margin-top: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 18px 20px;
+    }
+    .sidebar-note strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .sidebar-note p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    /* ── CONTENT ─────────────────────────────────────── */
+    .disclaimer-content { min-width: 0; }
+
+    .disclaimer-section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .disclaimer-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .disclaimer-section h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .disclaimer-section p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .disclaimer-section p:last-child { margin-bottom: 0; }
+
+    /* Info & warning boxes */
+    .info-box {
+      background: rgba(200,169,110,0.06);
+      border: 1px solid rgba(200,169,110,0.18);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin: 22px 0;
+    }
+    .info-box p { font-size: 14px; color: var(--text); margin: 0; }
+    .info-box strong { color: var(--accent); }
+
+    .warning-box {
+      background: rgba(200,80,80,0.06);
+      border: 1px solid rgba(200,80,80,0.18);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin: 22px 0;
+    }
+    .warning-box p { font-size: 14px; color: var(--text); margin: 0; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── ANIMATION ───────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .content-layout { grid-template-columns: 1fr; gap: 40px; }
+      .sidebar { position: static; }
+      .toc-list { display: none; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+      .page-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Solomon<span>.</span></a>
+      <a href="index.html" class="nav-back">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="label">Legal</span>
+      <h1><em>Disclaimer</em></h1>
+      <div class="page-hero-meta">
+        <span class="meta-item">Effective Date: 1 January 2025</span>
+        <span class="meta-dot"></span>
+        <span class="meta-item">Last Updated: April 2025</span>
+        <span class="meta-dot"></span>
+        <span class="meta-item">Solomon Wood — Freelance Services</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+    <div class="content-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <p class="toc-title">On This Page</p>
+        <ul class="toc-list">
+          <li><a href="#s1">1. General Disclaimer</a></li>
+          <li><a href="#s2">2. No Results Guarantee</a></li>
+          <li><a href="#s3">3. Website Content</a></li>
+          <li><a href="#s4">4. External Links</a></li>
+          <li><a href="#s5">5. Professional Advice</a></li>
+          <li><a href="#s6">6. Availability &amp; Errors</a></li>
+          <li><a href="#s7">7. Third-Party Platforms</a></li>
+          <li><a href="#s8">8. Contact</a></li>
+        </ul>
+        <div class="sidebar-note">
+          <strong>Questions?</strong>
+          <p>If anything on this page is unclear, please reach out before engaging my services.</p>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="disclaimer-content">
+
+        <div class="info-box">
+          <p><strong>Please read this Disclaimer carefully.</strong> By accessing this website or engaging my services, you acknowledge that you have read and understood the limitations and conditions set out below. This Disclaimer forms part of the broader legal framework governing my freelance services, alongside the Terms &amp; Conditions.</p>
+        </div>
+
+        <!-- 1 -->
+        <div class="disclaimer-section" id="s1">
+          <span class="section-num">Section 01</span>
+          <h2>General Disclaimer</h2>
+          <p>The information and services provided through this website and through my freelance practice are offered in good faith and to the best of my professional ability. However, all content on this website — including service descriptions, portfolio examples, project timelines, and pricing guidance — is provided for general informational purposes only and is subject to change without notice.</p>
+          <p>While I take every reasonable step to ensure the accuracy and quality of the work I deliver, I make no representations or warranties of any kind, express or implied, regarding the completeness, reliability, or suitability of the information presented on this website or the outcomes of any project undertaken.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="disclaimer-section" id="s2">
+          <span class="section-num">Section 02</span>
+          <h2>No Guarantee of Results</h2>
+          <p>Any examples of past work, client outcomes, or performance improvements referenced on this website are illustrative only. They reflect results achieved under specific circumstances and are not a guarantee or promise of similar outcomes for any future client or project.</p>
+          <p>The success of a website, video, or design asset depends on many factors that are entirely outside my control — including, but not limited to, the quality of the Client's product or service, their target audience, their marketing budget, their pricing strategy, and broader market conditions. I disclaim any liability for business losses, missed opportunities, or unmet expectations arising from a reasonable difference between anticipated and actual outcomes.</p>
+
+          <div class="warning-box">
+            <p>No statement made during a consultation, in a proposal, or in any promotional material on this website should be interpreted as a guarantee of specific business results, revenue growth, social media engagement, or search engine performance.</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="disclaimer-section" id="s3">
+          <span class="section-num">Section 03</span>
+          <h2>Website Content Accuracy</h2>
+          <p>I make every effort to keep the content on this website current and accurate. However, service descriptions, pricing indications, availability, and promotional offers — including the free video editing offer — may change at any time. The most accurate and up-to-date information will always be provided directly during a project consultation.</p>
+          <p>Portfolio items displayed on this website are shared with the consent of the respective clients or are publicly accessible works. Portfolio descriptions are written in good faith to accurately represent the scope and outcome of each project. They should not be relied upon as precise technical specifications or performance benchmarks.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="disclaimer-section" id="s4">
+          <span class="section-num">Section 04</span>
+          <h2>External Links</h2>
+          <p>This website may include links to third-party websites, tools, or resources for reference or convenience. These links are provided in good faith and do not constitute an endorsement of, or affiliation with, those third parties. I have no control over the content, privacy practices, or availability of external sites and accept no responsibility for any loss or damage that may arise from visiting them.</p>
+          <p>The inclusion of any external link does not imply that I recommend or vouch for the products, services, or information found at the linked destination.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="disclaimer-section" id="s5">
+          <span class="section-num">Section 05</span>
+          <h2>No Professional or Legal Advice</h2>
+          <p>Nothing on this website — or communicated by me during the course of a project — constitutes legal, financial, tax, marketing, or business advice. Any general guidance I offer on best practices for websites, social media content, or design is based on my professional experience and should be treated as practical suggestions, not expert recommendations in a regulated field.</p>
+          <p>Clients are encouraged to consult qualified professionals — including lawyers, accountants, or marketing strategists — for advice specific to their individual circumstances, particularly when making significant business decisions.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="disclaimer-section" id="s6">
+          <span class="section-num">Section 06</span>
+          <h2>Availability &amp; Errors</h2>
+          <p>I do not guarantee that this website will be available at all times or free from technical errors. The website may be temporarily unavailable due to maintenance, hosting issues, or circumstances beyond my control. I accept no liability for any inconvenience, loss of data, or disruption caused by the unavailability of this website.</p>
+          <p>If you notice any inaccurate or outdated information on this website, I welcome you to contact me directly so that it can be reviewed and corrected promptly.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="disclaimer-section" id="s7">
+          <span class="section-num">Section 07</span>
+          <h2>Third-Party Platforms &amp; Tools</h2>
+          <p>Some of the services I provide involve working with or delivering content through third-party platforms, including social media networks, website builders, hosting providers, and video platforms. I am not affiliated with, employed by, or responsible for the policies, availability, or decisions of any third-party platform.</p>
+          <p>Changes to platform algorithms, terms of service, or functionality may affect the performance or accessibility of work I have delivered. Such changes are entirely outside my control and do not constitute grounds for a refund or dispute of completed work.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="disclaimer-section" id="s8">
+          <span class="section-num">Section 08</span>
+          <h2>Contact</h2>
+          <p>If you have any questions about this Disclaimer or how it applies to your engagement with my services, please get in touch before proceeding. I am always happy to clarify anything in plain language.</p>
+
+          <div class="info-box">
+            <p><strong>Email:</strong> hello@solomonwood.com<br>
+            <strong>WhatsApp:</strong> Available via the <a href="index.html#contact">contact page</a><br>
+            <strong>Response Time:</strong> Within 24 hours on business days</p>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">Solomon<span>.</span></a>
+        <p class="footer-copy">© 2025 Solomon Wood. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#portfolio">Work</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.disclaimer-section');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
