@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions — Solomon Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET & VARIABLES ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #111118;
+      --card:     #16161e;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #c8a96e;
+      --accent2:  #6e9ec8;
+      --text:     #e8e6e0;
+      --muted:    #7a7870;
+      --white:    #ffffff;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --r:        12px;
+      --r-lg:     20px;
+      --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    /* ─── NAV ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* ─── HERO BANNER ───────────────────────────────── */
+    .page-hero {
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; right: -80px; }
+    .blob-2 { width: 400px; height: 400px; background: var(--accent2); bottom: -100px; left: -100px; }
+
+    .page-hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+    .page-hero h1 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--accent); }
+    .page-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+    /* ─── LAYOUT ────────────────────────────────────── */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      padding: 72px 0 120px;
+      align-items: start;
+    }
+
+    /* ─── SIDEBAR TOC ───────────────────────────────── */
+    .sidebar {
+      position: sticky;
+      top: 90px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .toc-list li a {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: var(--r);
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .toc-list li a:hover,
+    .toc-list li a.active {
+      color: var(--accent);
+      background: rgba(200,169,110,0.06);
+      border-left-color: var(--accent);
+    }
+
+    .sidebar-note {
+      margin-top: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 18px 20px;
+    }
+    .sidebar-note p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .sidebar-note strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    /* ─── MAIN CONTENT ──────────────────────────────── */
+    .terms-content { min-width: 0; }
+
+    .terms-section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .terms-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .terms-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .terms-section p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .terms-section p:last-child { margin-bottom: 0; }
+
+    .terms-section h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin: 28px 0 12px;
+      font-family: var(--font-display);
+    }
+
+    /* Info box */
+    .info-box {
+      background: rgba(200,169,110,0.06);
+      border: 1px solid rgba(200,169,110,0.18);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .info-box p {
+      font-size: 14px;
+      color: var(--text);
+      margin: 0;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* Warning box */
+    .warning-box {
+      background: rgba(200,80,80,0.06);
+      border: 1px solid rgba(200,80,80,0.18);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .warning-box p {
+      font-size: 14px;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* Policy table */
+    .policy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .policy-table th {
+      text-align: left;
+      padding: 12px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .policy-table td {
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .policy-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ─── ANIMATIONS ────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-hero-inner { animation: fadeUp 0.7s var(--ease) both; }
+
+    /* ─── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .content-layout { grid-template-columns: 1fr; gap: 40px; }
+      .sidebar { position: static; }
+      .toc-list { display: none; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+      .page-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAV ══════════════════════════════════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Solomon<span>.</span></a>
+      <a href="index.html" class="nav-back">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE HERO ════════════════════════════════════════ -->
+  <div class="page-hero">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="label">Legal</span>
+      <h1>Terms &amp; <em>Conditions</em></h1>
+      <div class="page-hero-meta">
+        <span class="meta-item">Effective Date: 1 January 2025</span>
+        <span class="meta-dot"></span>
+        <span class="meta-item">Last Updated: April 2025</span>
+        <span class="meta-dot"></span>
+        <span class="meta-item">Solomon Wood — Freelance Services</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CONTENT ══════════════════════════════════════════ -->
+  <div class="container">
+    <div class="content-layout">
+
+      <!-- Sidebar TOC -->
+      <aside class="sidebar">
+        <p class="toc-title">On This Page</p>
+        <ul class="toc-list">
+          <li><a href="#s1">1. Agreement &amp; Acceptance</a></li>
+          <li><a href="#s2">2. Services Offered</a></li>
+          <li><a href="#s3">3. Project Engagement</a></li>
+          <li><a href="#s4">4. Payments &amp; Fees</a></li>
+          <li><a href="#s5">5. Revisions &amp; Approvals</a></li>
+          <li><a href="#s6">6. Timelines &amp; Delivery</a></li>
+          <li><a href="#s7">7. Intellectual Property</a></li>
+          <li><a href="#s8">8. Client Responsibilities</a></li>
+          <li><a href="#s9">9. Confidentiality</a></li>
+          <li><a href="#s10">10. Cancellations &amp; Refunds</a></li>
+          <li><a href="#s11">11. Warranties &amp; Liability</a></li>
+          <li><a href="#s12">12. Third-Party Services</a></li>
+          <li><a href="#s13">13. Portfolio &amp; Promotion</a></li>
+          <li><a href="#s14">14. Dispute Resolution</a></li>
+          <li><a href="#s15">15. Governing Law</a></li>
+          <li><a href="#s16">16. Changes to Terms</a></li>
+          <li><a href="#s17">17. Contact</a></li>
+        </ul>
+
+        <div class="sidebar-note">
+          <strong>Questions about these terms?</strong>
+          <p>Reach out before starting a project and I will walk you through anything that is unclear.</p>
+        </div>
+      </aside>
+
+      <!-- Main Terms Content -->
+      <main class="terms-content">
+
+        <div class="info-box">
+          <p><strong>Please read these Terms and Conditions carefully.</strong> By engaging my services — whether verbally, in writing, via WhatsApp, email, or any other channel — you confirm that you have read, understood, and agreed to be bound by the terms set out in this document. If you do not agree to any part of these terms, you should not proceed with engaging my services.</p>
+        </div>
+
+        <!-- 1 -->
+        <div class="terms-section" id="s1">
+          <span class="section-num">Section 01</span>
+          <h2>Agreement &amp; Acceptance</h2>
+          <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("the Client") and Solomon Wood ("I", "me", "my"), a freelance web developer and video editor operating as an independent contractor. These Terms govern all services provided by me, including but not limited to website development, video editing, and graphic design.</p>
+          <p>Acceptance of these Terms occurs when the Client takes any one of the following actions: approves a written or verbal quotation; makes a deposit payment; submits project materials or a project brief; or otherwise instructs me to commence work on a project. No separate signed contract is required for acceptance to be valid, though a formal contract may be issued for larger projects.</p>
+          <p>These Terms apply to all past, present, and future projects unless a separate written agreement explicitly supersedes them in full. Where a separate project agreement is in place, these Terms apply to all matters not addressed in that agreement.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="terms-section" id="s2">
+          <span class="section-num">Section 02</span>
+          <h2>Services Offered</h2>
+          <p>I provide the following freelance digital services to individuals, businesses, and organisations:</p>
+
+          <h3>Website Development</h3>
+          <p>This includes the design, development, and delivery of websites — including landing pages, multi-page business websites, portfolio sites, and e-commerce storefronts. Websites are built using standard web technologies (HTML, CSS, JavaScript) and, where agreed, third-party platforms such as WordPress, Webflow, or Shopify. Hosting, domain registration, and ongoing maintenance are not included unless separately agreed in writing.</p>
+
+          <h3>Video Editing</h3>
+          <p>This includes the editing of raw video footage into finished video content for social media platforms, promotional use, or personal use. Services encompass but are not limited to: cutting and sequencing footage, adding music and sound effects, applying colour grading and visual effects, adding subtitles and captions, and formatting content for Reels, YouTube Shorts, TikTok, and other platforms. The Client is responsible for providing legally licensed footage and audio unless otherwise agreed.</p>
+
+          <h3>Graphic Design</h3>
+          <p>This includes the creation of digital and print-ready design assets, including promotional posters, business menus, invoices, letterheads, invitation cards, social media graphics, and branded marketing materials. Final files are delivered in formats agreed upon at the outset of the project (e.g. PDF, PNG, or editable source files where applicable).</p>
+
+          <p>I reserve the right to decline any project request that conflicts with my values, exceeds my current capacity, or falls outside my defined scope of services. Nothing in an initial quote or conversation constitutes a binding commitment to deliver services until a deposit is paid or work is formally commenced.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="terms-section" id="s3">
+          <span class="section-num">Section 03</span>
+          <h2>Project Engagement Process</h2>
+          <p>All projects follow a defined engagement process to ensure both parties are aligned before work begins. The typical process is as follows:</p>
+
+          <h3>Initial Consultation</h3>
+          <p>The Client contacts me via WhatsApp, email, or an enquiry form to describe their requirements. I will respond within 24 hours on business days. A consultation — by call, message, or video — may be arranged to discuss the project in detail at no charge.</p>
+
+          <h3>Quotation</h3>
+          <p>Following the consultation, I will provide a written quotation detailing the scope of work, deliverables, estimated timeline, and total cost. Quotations are valid for 14 days from the date of issue. I reserve the right to revise a quotation if the Client's requirements change materially before work commences.</p>
+
+          <h3>Project Brief</h3>
+          <p>Upon acceptance of the quotation and receipt of the deposit, the Client is required to provide a complete project brief. This includes all necessary content, assets, references, brand guidelines, and written instructions. Delays in providing the project brief may result in revised timelines, for which I bear no responsibility.</p>
+
+          <h3>Commencement</h3>
+          <p>Work begins upon receipt of the agreed deposit and a complete project brief. The commencement date is the date on which I confirm in writing that both conditions have been satisfied. Verbal confirmations do not constitute an official start date for the purposes of timeline calculations.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="terms-section" id="s4">
+          <span class="section-num">Section 04</span>
+          <h2>Payments &amp; Fees</h2>
+
+          <h3>Payment Structure</h3>
+          <p>All projects require a non-refundable deposit of 50% of the total agreed fee before work commences. The remaining 50% is due upon delivery of the final files and before any website is made live, domain transferred, or source files handed over. For larger projects — typically those exceeding an agreed threshold stated in the project quotation — a milestone-based payment schedule may apply, which will be set out clearly in writing.</p>
+
+          <table class="policy-table">
+            <thead>
+              <tr>
+                <th>Project Stage</th>
+                <th>Payment Due</th>
+                <th>Condition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Project Kickoff</td>
+                <td>50% deposit</td>
+                <td>Required before work begins</td>
+              </tr>
+              <tr>
+                <td>Final Delivery</td>
+                <td>Remaining 50%</td>
+                <td>Due before files are released</td>
+              </tr>
+              <tr>
+                <td>Milestone Projects</td>
+                <td>As agreed in writing</td>
+                <td>Schedule outlined in quotation</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Accepted Payment Methods</h3>
+          <p>Payments may be made via bank transfer, mobile money, or any other method explicitly agreed upon in writing. All payment details will be provided on the invoice issued to the Client. I do not accept cash payments for remote projects unless otherwise arranged.</p>
+
+          <h3>Late Payments</h3>
+          <p>Final balances unpaid within 7 days of the agreed due date will incur a late fee of 5% of the outstanding amount per week. I reserve the right to suspend delivery of files, pause work, or withdraw access to any delivered assets until the outstanding balance is paid in full. I am not liable for any losses incurred by the Client as a result of withheld deliverables due to non-payment.</p>
+
+          <h3>Currency &amp; Taxes</h3>
+          <p>All fees are quoted in the currency specified in the project quotation. Where applicable, any taxes, levies, or duties that arise from the Client's jurisdiction are the sole responsibility of the Client and will not be absorbed by me. My fees are exclusive of any applicable taxes unless explicitly stated otherwise.</p>
+
+          <h3>Expenses</h3>
+          <p>Any third-party costs incurred as part of delivering the project — including but not limited to stock footage licences, font licences, premium plugin purchases, domain registrations, or hosting fees — will be invoiced to the Client at cost. Such expenses will be communicated and approved in writing before being incurred.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="terms-section" id="s5">
+          <span class="section-num">Section 05</span>
+          <h2>Revisions &amp; Approvals</h2>
+          <p>I am committed to delivering work that meets the Client's expectations and will accommodate reasonable revision requests throughout the project lifecycle. The revision policy is structured as follows to maintain project momentum and prevent scope creep.</p>
+
+          <h3>Included Revisions</h3>
+          <p>Each project includes a defined number of revision rounds as specified in the project quotation. Unless otherwise agreed, the standard allowance is three rounds of revisions per deliverable. A "revision round" is defined as a single consolidated set of feedback submitted in one message or document. Revisions must be submitted within 7 days of each draft being delivered. Feedback received after this period may be treated as a new revision round.</p>
+
+          <h3>What Constitutes a Revision</h3>
+          <p>A revision is defined as a modification to the existing agreed scope — for example, changing text, adjusting colours, reordering sections, or trimming footage. A revision does not include requests that materially change the original project brief, introduce new features or content, or require substantial redesign. Such requests will be treated as additional work and quoted accordingly.</p>
+
+          <h3>Additional Revisions</h3>
+          <p>Revision requests that exceed the included allowance, or that fall outside the original scope, will be charged at my standard hourly or per-revision rate, which will be communicated to the Client before additional work commences. The Client may decline additional revision work; however, the project will be considered finalised at the last approved version.</p>
+
+          <h3>Client Approval</h3>
+          <p>Each deliverable requires explicit written approval from the Client before it is considered final. Approval may be given via email or WhatsApp message. Once a Client has approved a deliverable in writing, further changes to that deliverable will be treated as additional work. I reserve the right to proceed with project delivery based on written approval and am not obligated to accommodate post-approval change requests without additional compensation.</p>
+
+          <div class="info-box">
+            <p><strong>Important:</strong> Silence does not constitute approval. If the Client does not respond to a delivered draft within 14 days, I will send a follow-up. If no response is received within a further 7 days, the project may be closed and the deposit forfeited.</p>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="terms-section" id="s6">
+          <span class="section-num">Section 06</span>
+          <h2>Timelines &amp; Delivery</h2>
+          <p>I take deadlines seriously and will always strive to deliver on time. Estimated timelines are provided in good faith based on the information available at the time of quotation. The following conditions apply to all project timelines.</p>
+
+          <h3>Timeline Estimates</h3>
+          <p>All timelines are estimates based on the agreed scope of work and the assumption that the Client will provide all required materials, feedback, and approvals within the timeframes specified. Estimated timelines begin from the official commencement date, which is the date on which the deposit is received and a complete project brief is submitted.</p>
+
+          <h3>Client-Caused Delays</h3>
+          <p>If the Client fails to provide required content, feedback, or approval within the agreed timeframes, the project timeline will be extended by the equivalent delay period, plus a reasonable recovery window. I am not liable for any business losses or missed opportunities resulting from delays caused by the Client's failure to respond promptly.</p>
+
+          <h3>Force Majeure</h3>
+          <p>I shall not be liable for delays caused by circumstances beyond my reasonable control, including but not limited to illness, power outages, internet disruption, natural disasters, platform outages, or other unforeseen events. In such circumstances, I will notify the Client as soon as reasonably possible and provide a revised timeline.</p>
+
+          <h3>Rush Projects</h3>
+          <p>Projects requiring delivery within a shorter timeframe than is standard may be accommodated subject to availability and will incur a rush fee. The rush fee — typically 25–50% of the total project fee — will be confirmed in writing before work commences. Rush timelines are only guaranteed once the rush fee and deposit have been received.</p>
+
+          <h3>Delivery Format</h3>
+          <p>Final deliverables will be provided in the formats agreed at the project outset and delivered via the channel specified (e.g. email, WeTransfer, Google Drive, or direct platform upload). I am not responsible for files that are lost, corrupted, or inaccessible after delivery due to the Client's storage infrastructure or email limitations.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="terms-section" id="s7">
+          <span class="section-num">Section 07</span>
+          <h2>Intellectual Property &amp; Ownership</h2>
+
+          <h3>Transfer of Ownership</h3>
+          <p>Upon receipt of full and final payment, ownership of the completed deliverable — including the final website, video, or design asset — is transferred to the Client. This transfer covers the specific finished work as delivered. It does not extend to my underlying tools, frameworks, processes, generic code libraries, templates, or creative methodologies, which remain my intellectual property.</p>
+
+          <h3>Pre-Payment Ownership</h3>
+          <p>All work in progress, including drafts, previews, and partially completed deliverables, remains my property until full payment has been received. The Client may not use, distribute, publish, or reproduce any work — in whole or in part — until the final balance has been settled.</p>
+
+          <h3>Third-Party Assets</h3>
+          <p>Where a project incorporates third-party assets — such as stock images, stock footage, licensed fonts, or audio tracks — the relevant licences for those assets are the responsibility of the Client. I will advise on licence requirements where applicable, but I am not liable for any intellectual property infringement arising from the use of assets provided by or requested by the Client without appropriate licensing.</p>
+
+          <h3>Source Files</h3>
+          <p>Source files (e.g. Photoshop, Premiere Pro, or Figma files) are not included in the standard deliverable package unless explicitly agreed in writing and reflected in the project quotation. Where source files are included, this will attract an additional fee. Editable website files may be provided only if the Client's hosting environment supports the relevant framework or platform.</p>
+
+          <h3>Client-Provided Materials</h3>
+          <p>The Client warrants that all materials, content, logos, images, and other assets provided to me are owned by the Client or that the Client has full authority to use them. I accept no liability for claims arising from the use of Client-provided materials that infringe the intellectual property rights of any third party.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="terms-section" id="s8">
+          <span class="section-num">Section 08</span>
+          <h2>Client Responsibilities</h2>
+          <p>The Client plays a critical role in the success and timely completion of every project. By engaging my services, the Client agrees to fulfil the following responsibilities throughout the duration of the project.</p>
+
+          <h3>Provision of Materials</h3>
+          <p>The Client is responsible for providing all necessary content, including text, images, videos, logos, brand guidelines, and any other materials required to complete the project, within the timeframe agreed at project kickoff. Materials should be provided in a format that is ready to use. Significant time spent on formatting or correcting Client-provided materials may be invoiced as additional work.</p>
+
+          <h3>Timely Feedback</h3>
+          <p>The Client agrees to review drafts and provide consolidated, actionable feedback within the timeframe specified for each review stage. Vague or contradictory feedback that requires significant clarification may delay the project and is not treated as a revision for timeline purposes until the feedback is clarified.</p>
+
+          <h3>Single Point of Contact</h3>
+          <p>Where the Client is a business or organisation, a single authorised representative should be designated as the point of contact. Conflicting instructions from multiple stakeholders will not be acted upon until a single, consolidated direction is confirmed by the authorised representative.</p>
+
+          <h3>Accuracy of Information</h3>
+          <p>The Client is responsible for ensuring the accuracy of all information provided, including business names, contact details, product descriptions, pricing, and any other content that will appear in the final deliverable. I am not liable for errors arising from inaccurate Client-provided information.</p>
+
+          <h3>Legal Compliance</h3>
+          <p>The Client is solely responsible for ensuring that the content and purpose of the project comply with all applicable laws and regulations in their jurisdiction, including consumer protection laws, advertising standards, data protection regulations, and any industry-specific requirements. I reserve the right to decline or withdraw from a project if I reasonably believe it involves unlawful or unethical content.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="terms-section" id="s9">
+          <span class="section-num">Section 09</span>
+          <h2>Confidentiality</h2>
+          <p>I treat all Client information with the highest degree of discretion and professionalism. Any business information, financial data, unreleased product details, strategic plans, or personally sensitive information shared with me in the course of a project will be treated as confidential and will not be disclosed to any third party without the Client's prior written consent.</p>
+          <p>This confidentiality obligation does not extend to information that is or becomes publicly available through no fault of mine, information I already possessed prior to the engagement, or information that I am legally required to disclose by a court order or applicable law.</p>
+          <p>In turn, the Client agrees not to share my private quotations, internal project documents, or proprietary workflow processes with third parties without my prior written consent.</p>
+          <p>Confidentiality obligations survive the termination or completion of the project and remain in force indefinitely, unless both parties agree otherwise in writing.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="terms-section" id="s10">
+          <span class="section-num">Section 10</span>
+          <h2>Cancellations &amp; Refunds</h2>
+
+          <h3>Cancellation by the Client</h3>
+          <p>The Client may cancel a project at any time by providing written notice via email or WhatsApp. The following cancellation policy applies based on the stage at which the cancellation notice is received:</p>
+
+          <table class="policy-table">
+            <thead>
+              <tr>
+                <th>Project Stage at Cancellation</th>
+                <th>Refund Entitlement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Before work has commenced</td>
+                <td>Full deposit refunded, less a 10% administration fee</td>
+              </tr>
+              <tr>
+                <td>After work has commenced but before first draft</td>
+                <td>50% of deposit refunded; remainder retained for work completed</td>
+              </tr>
+              <tr>
+                <td>After first draft has been delivered</td>
+                <td>Deposit is non-refundable; Client pays for work completed to date</td>
+              </tr>
+              <tr>
+                <td>After final approval has been given</td>
+                <td>No refund; full balance remains due</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Upon cancellation, all work completed up to that point remains my property until any outstanding balance is settled. Partial deliverables will not be released without payment for work completed.</p>
+
+          <h3>Cancellation by Me</h3>
+          <p>I reserve the right to cancel a project if the Client engages in abusive, threatening, or unreasonable behaviour; fails to make payments on time; fails to provide required materials within a reasonable period after repeated follow-up; or if the project is found to involve unlawful content. In such circumstances, I will refund any portion of fees paid that corresponds to work not yet completed, calculated fairly at my discretion.</p>
+
+          <h3>Refund Policy for the Free Video Offer</h3>
+          <p>The "first video edited free" promotional offer is available to new clients only and applies to one short-form video (up to 90 seconds) per client. The offer has no cash value and cannot be exchanged for credit, discounts on other services, or refunded. I reserve the right to withdraw this offer at any time without prior notice.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="terms-section" id="s11">
+          <span class="section-num">Section 11</span>
+          <h2>Warranties &amp; Limitation of Liability</h2>
+
+          <h3>My Warranties</h3>
+          <p>I warrant that all work delivered is original, created by me (or by tools and third-party assets with appropriate permissions), and produced with reasonable professional skill and care. I warrant that, to the best of my knowledge, the work I create will not infringe the intellectual property rights of any third party.</p>
+
+          <h3>No Guarantee of Results</h3>
+          <p>I do not guarantee any specific business outcomes, sales, revenue, traffic increases, social media growth, or search engine rankings as a result of work delivered. All performance projections discussed during consultations are estimates based on general industry knowledge and are not binding commitments. The effectiveness of a website or video content depends on numerous factors beyond my control, including the Client's product, pricing, target market, and marketing strategy.</p>
+
+          <h3>Limitation of Liability</h3>
+          <p>To the maximum extent permitted by applicable law, my total liability to the Client for any claim arising from or in connection with services provided shall not exceed the total fees paid by the Client for the specific project giving rise to the claim. I shall not be liable for any indirect, consequential, special, or incidental loss, including but not limited to lost profits, lost revenue, loss of data, or loss of business opportunity, even if I have been advised of the possibility of such losses.</p>
+
+          <div class="warning-box">
+            <p>I am an independent freelancer, not a registered company. These terms reflect the practical reality of a sole-trader service arrangement. Clients with requirements for formal warranties, indemnities, or insurance coverage beyond what is described here should raise these requirements before commencing a project.</p>
+          </div>
+
+          <h3>Website Security &amp; Maintenance</h3>
+          <p>Once a website has been delivered and accepted, I am not responsible for its ongoing security, performance, or compatibility with future browser updates, plugin releases, or platform changes unless a separate maintenance agreement is in place. The Client assumes full responsibility for keeping their website secure, backed up, and up to date after delivery.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="terms-section" id="s12">
+          <span class="section-num">Section 12</span>
+          <h2>Third-Party Services &amp; Platforms</h2>
+          <p>Many projects involve integration with or delivery through third-party platforms, including but not limited to WordPress, Webflow, Shopify, YouTube, Instagram, TikTok, Google services, WhatsApp Business, and email platforms. The Client acknowledges and agrees to the following conditions in relation to third-party services.</p>
+
+          <p>I have no control over the terms of service, availability, pricing, or functionality of any third-party platform. Changes made by third-party providers — including platform updates, policy changes, or service discontinuations — may affect the functionality of delivered work and are not my responsibility. I shall not be liable for any losses arising from a third-party platform's decisions or service disruptions.</p>
+
+          <p>Where a project requires the Client to hold accounts or subscriptions with third-party services (e.g. a hosting provider or e-commerce platform), the Client is responsible for creating and maintaining those accounts and meeting the costs associated with them. I may assist in the setup of such accounts as a courtesy, but account ownership and responsibility remain with the Client at all times.</p>
+
+          <p>Any API integrations, plugin functionality, or embedded third-party tools included in a website are delivered in good faith based on current platform capabilities. Future deprecation or changes to those tools are outside my control and maintenance of such integrations post-delivery falls to the Client.</p>
+        </div>
+
+        <!-- 13 -->
+        <div class="terms-section" id="s13">
+          <span class="section-num">Section 13</span>
+          <h2>Portfolio &amp; Promotional Use</h2>
+          <p>I retain the right to display completed work in my professional portfolio, on my website, and across my social media channels for the purposes of showcasing my skills and attracting new clients. This includes screenshots, video clips, project descriptions, and before-and-after examples.</p>
+          <p>If the Client wishes for their project to remain confidential and not appear in my portfolio, they must notify me in writing before the project commences. A confidentiality arrangement of this nature may attract an additional fee to compensate for the restriction on my promotional rights.</p>
+          <p>Where I share Client work publicly, I will exercise reasonable discretion and will not disclose any sensitive business information, unpublished content, or proprietary data as part of any portfolio showcase. Attribution to the Client's business will only be made where the Client has given explicit consent or where the work is already publicly accessible.</p>
+          <p>The Client may request that previously published portfolio items be removed at any time. Such requests will be honoured within a reasonable timeframe, provided the work has not been shared or embedded by third parties in a manner outside my control.</p>
+        </div>
+
+        <!-- 14 -->
+        <div class="terms-section" id="s14">
+          <span class="section-num">Section 14</span>
+          <h2>Dispute Resolution</h2>
+          <p>In the event of a dispute arising from or in connection with these Terms or any project engagement, both parties agree to first attempt to resolve the matter through good-faith negotiation. The Client should raise any concerns in writing via email, and I will respond within 5 business days with a proposed resolution.</p>
+          <p>If the dispute cannot be resolved through direct negotiation within 30 days of the initial written complaint, both parties agree to engage in non-binding mediation through a mutually agreed mediator before pursuing any formal legal action. The cost of mediation will be shared equally between the parties unless otherwise determined by the mediator.</p>
+          <p>Nothing in this clause prevents either party from seeking urgent injunctive relief from a court of competent jurisdiction where necessary to prevent immediate harm or irreparable damage.</p>
+        </div>
+
+        <!-- 15 -->
+        <div class="terms-section" id="s15">
+          <span class="section-num">Section 15</span>
+          <h2>Governing Law</h2>
+          <p>These Terms and Conditions are governed by and construed in accordance with the laws of the jurisdiction in which I primarily operate as a freelancer. Any disputes that proceed to formal legal proceedings shall be subject to the exclusive jurisdiction of the courts in that jurisdiction, unless both parties agree in writing to an alternative forum.</p>
+          <p>Where the Client is based in a different jurisdiction, both parties agree to honour these Terms and, where permitted by applicable law, waive any objection to the jurisdiction specified herein. International clients are encouraged to raise any jurisdictional concerns before commencing a project.</p>
+        </div>
+
+        <!-- 16 -->
+        <div class="terms-section" id="s16">
+          <span class="section-num">Section 16</span>
+          <h2>Changes to These Terms</h2>
+          <p>I reserve the right to update or amend these Terms and Conditions at any time. Changes will be published on this page with a revised "Last Updated" date. It is the Client's responsibility to review these Terms periodically. Continued engagement with my services following any amendment constitutes acceptance of the revised Terms.</p>
+          <p>For active projects at the time of any amendment, the version of the Terms in effect at the project's commencement date will apply, unless both parties agree in writing to adopt the revised Terms.</p>
+        </div>
+
+        <!-- 17 -->
+        <div class="terms-section" id="s17">
+          <span class="section-num">Section 17</span>
+          <h2>Contact &amp; Enquiries</h2>
+          <p>If you have any questions about these Terms and Conditions, wish to raise a concern, or would like to discuss a project-specific arrangement that differs from the standard terms set out here, please get in touch before commencing work.</p>
+
+          <div class="info-box">
+            <p><strong>Email:</strong> hello@solomonwood.com<br>
+            <strong>WhatsApp:</strong> Available via the contact page<br>
+            <strong>Response Time:</strong> Within 24 hours on business days</p>
+          </div>
+
+          <p>By contacting me and engaging my services, you confirm that you have read and agree to these Terms and Conditions in their entirety. Thank you for taking the time to understand how I work — I look forward to collaborating with you.</p>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">Solomon<span>.</span></a>
+        <p class="footer-copy">© 2025 Solomon Wood. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#portfolio">Work</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ JS: TOC ACTIVE HIGHLIGHT ════════════════════════ -->
+  <script>
+    const sections = document.querySelectorAll('.terms-section');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Smooth offset scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
