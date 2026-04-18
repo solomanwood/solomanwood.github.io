@@ -375,6 +375,105 @@
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
       .page-hero { padding: 120px 0 60px; }
     }
+    .site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* Top */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.footer-logo span {
+  color: var(--accent);
+}
+
+.footer-tagline {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* Links */
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* Bottom */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.footer-legal a:hover {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+      }
   </style>
 </head>
 
@@ -774,18 +873,38 @@
   </div>
 
   <!-- ═══ FOOTER ════════════════════════════════════════════ -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
+  <footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Top Row -->
+    <div class="footer-top">
+      <div class="footer-brand">
         <a href="index.html" class="footer-logo">Solomon<span>.</span></a>
-        <p class="footer-copy">© 2025 Solomon Wood. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="index.html#services">Services</a>
-          <a href="index.html#portfolio">Work</a>
-          <a href="index.html#contact">Contact</a>
-        </div>
+        <p class="footer-tagline">
+          Freelance web developer & video editor crafting clean, high-performing digital experiences.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="about/">About</a>
+        <a href="howiwork/">How I Work</a>
+        <a href="services/">Services</a>
+        <a href="contact/">Contact</a>
       </div>
     </div>
+
+    <!-- Bottom Row -->
+    <div class="footer-bottom">
+      <p>© 2026 Solomon Wood. All rights reserved.</p>
+
+      <div class="footer-legal">
+        <a href="terms/">Terms</a>
+        <a href="privacy/">Privacy</a>
+        <a href="disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+
+  </div>
   </footer>
 
   <!-- ═══ JS: TOC ACTIVE HIGHLIGHT ════════════════════════ -->
