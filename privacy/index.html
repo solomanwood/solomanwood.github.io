@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Solomon Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0a0a0f;--surface:#111118;--card:#16161e;--border:rgba(255,255,255,0.07);--accent:#c8a96e;--accent2:#6e9ec8;--text:#e8e6e0;--muted:#7a7870;--white:#ffffff;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--r:12px;--r-lg:20px;--ease:cubic-bezier(0.22,1,0.36,1)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.4}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+    h1,h2,h3{font-family:var(--font-display);line-height:1.2}
+    a{color:var(--accent);text-decoration:none;transition:opacity .2s}a:hover{opacity:.75}
+    .label{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-bottom:14px}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 0}
+    .nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--white);text-decoration:none}.nav-logo span{color:var(--accent)}
+    .nav-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}.nav-back:hover{color:var(--accent)}
+
+    .page-hero{padding:140px 0 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+    .hero-blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.11;pointer-events:none}
+    .blob-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-80px}
+    .blob-2{width:400px;height:400px;background:var(--accent2);bottom:-100px;left:-80px}
+    .page-hero-inner{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:2;animation:fadeUp .7s var(--ease) both}
+    .page-hero h1{font-size:clamp(40px,5vw,64px);font-weight:900;color:var(--white);letter-spacing:-.03em;margin-bottom:18px}
+    .page-hero h1 em{font-style:normal;color:var(--accent)}
+    .page-hero-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .meta-item{font-size:13px;color:var(--muted)}
+    .meta-dot{width:4px;height:4px;border-radius:50%;background:var(--border)}
+
+    .container{max-width:1180px;margin:0 auto;padding:0 32px}
+
+    .content-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;padding:72px 0 120px;align-items:start}
+
+    .sidebar{position:sticky;top:90px}
+    .toc-title{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+    .toc-list li a{display:block;font-size:13px;color:var(--muted);padding:8px 14px;border-radius:var(--r);border-left:2px solid transparent;transition:all .2s;text-decoration:none}
+    .toc-list li a:hover,.toc-list li a.active{color:var(--accent);background:rgba(200,169,110,.06);border-left-color:var(--accent)}
+    .sidebar-note{margin-top:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+    .sidebar-note strong{display:block;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:5px}
+    .sidebar-note p{font-size:12px;color:var(--muted);line-height:1.7}
+
+    .privacy-content{min-width:0}
+    .privacy-section{margin-bottom:52px;padding-bottom:52px;border-bottom:1px solid var(--border)}
+    .privacy-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .section-num{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+    .privacy-section h2{font-size:26px;font-weight:700;color:var(--white);letter-spacing:-.02em;margin-bottom:16px}
+    .privacy-section p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:14px}
+    .privacy-section p:last-child{margin-bottom:0}
+    .privacy-section h3{font-size:17px;font-weight:700;color:var(--white);margin:24px 0 10px;font-family:var(--font-display)}
+
+    .info-box{background:rgba(200,169,110,.06);border:1px solid rgba(200,169,110,.18);border-radius:var(--r);padding:18px 22px;margin:20px 0}
+    .info-box p{font-size:14px;color:var(--text);margin:0}
+    .info-box strong{color:var(--accent)}
+
+    footer{border-top:1px solid var(--border);padding:36px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .footer-logo{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--white);text-decoration:none}.footer-logo span{color:var(--accent)}
+    .footer-copy{font-size:13px;color:var(--muted)}
+    .footer-links{display:flex;gap:24px}.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--accent)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:900px){.content-layout{grid-template-columns:1fr;gap:40px}.sidebar{position:static}.toc-list{display:none}}
+    @media(max-width:640px){.container{padding:0 20px}.footer-inner{flex-direction:column;text-align:center}}
+    .site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* Top */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.footer-logo span {
+  color: var(--accent);
+}
+
+.footer-tagline {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* Links */
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* Bottom */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.footer-legal a:hover {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Solomon<span>.</span></a>
+    <a href="index.html" class="nav-back">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Home
+    </a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="page-hero-inner">
+    <span class="label">Legal</span>
+    <h1>Privacy <em>Policy</em></h1>
+    <div class="page-hero-meta">
+      <span class="meta-item">Effective: 1 January 2025</span>
+      <span class="meta-dot"></span>
+      <span class="meta-item">Last Updated: April 2025</span>
+      <span class="meta-dot"></span>
+      <span class="meta-item">Solomon Wood — Freelance Services</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="content-layout">
+
+    <aside class="sidebar">
+      <p class="toc-title">On This Page</p>
+      <ul class="toc-list">
+        <li><a href="#s1">1. Overview</a></li>
+        <li><a href="#s2">2. What I Collect</a></li>
+        <li><a href="#s3">3. How I Use It</a></li>
+        <li><a href="#s4">4. Who I Share It With</a></li>
+        <li><a href="#s5">5. Data Storage</a></li>
+        <li><a href="#s6">6. Cookies</a></li>
+        <li><a href="#s7">7. Your Rights</a></li>
+        <li><a href="#s8">8. Children</a></li>
+        <li><a href="#s9">9. Changes</a></li>
+        <li><a href="#s10">10. Contact</a></li>
+      </ul>
+      <div class="sidebar-note">
+        <strong>Plain language</strong>
+        <p>This policy is written to be readable. If anything is unclear, just ask me directly.</p>
+      </div>
+    </aside>
+
+    <main class="privacy-content">
+
+      <div class="info-box">
+        <p><strong>The short version:</strong> I only collect the information you give me directly. I use it to do the work you've hired me for. I don't sell it, I don't spam you, and I keep it only as long as needed.</p>
+      </div>
+
+      <div class="privacy-section" id="s1">
+        <span class="section-num">Section 01</span>
+        <h2>Overview</h2>
+        <p>This Privacy Policy explains how Solomon Wood ("I", "me") collects, uses, and handles personal information when you visit this website or engage my freelance services. I take privacy seriously and keep data handling simple and transparent.</p>
+        <p>As a sole trader, I am not a large data processor. The personal information I hold is limited to what's genuinely needed to communicate with you and deliver your project.</p>
+      </div>
+
+      <div class="privacy-section" id="s2">
+        <span class="section-num">Section 02</span>
+        <h2>What Information I Collect</h2>
+        <h3>Information you give me directly</h3>
+        <p>When you contact me via the enquiry form, email, or WhatsApp, you may share your name, email address, phone number, and details about your project. I only receive what you choose to send.</p>
+        <h3>Project materials</h3>
+        <p>During a project you may share files, images, videos, written content, or business information. I treat all of this as confidential project material, not as personal data to be stored beyond the project lifecycle.</p>
+        <h3>Website usage data</h3>
+        <p>This website may collect basic, anonymised usage data through standard hosting analytics — such as page views and general geographic region. This data does not identify you personally and is used only to understand how the site is being used so I can improve it.</p>
+      </div>
+
+      <div class="privacy-section" id="s3">
+        <span class="section-num">Section 03</span>
+        <h2>How I Use Your Information</h2>
+        <p>I use the information you share for three purposes only: to respond to your enquiry, to deliver and communicate about your project, and to send an invoice once the work is complete. I do not use your contact details for marketing, newsletters, or any form of outreach unless you've asked me to stay in touch.</p>
+        <p>I do not use automated decision-making or profiling of any kind.</p>
+      </div>
+
+      <div class="privacy-section" id="s4">
+        <span class="section-num">Section 04</span>
+        <h2>Who I Share It With</h2>
+        <p>I do not sell, rent, or trade your personal information. I do not share it with third parties for marketing purposes.</p>
+        <p>In the course of delivering a project, I may use standard tools such as Google Drive for file sharing, WhatsApp for communication, or email platforms for invoicing. These are standard business tools with their own privacy policies. I only share information through these tools where it is necessary to complete the work you've requested.</p>
+        <p>I may disclose information if required to do so by law or a valid legal request.</p>
+      </div>
+
+      <div class="privacy-section" id="s5">
+        <span class="section-num">Section 05</span>
+        <h2>Data Storage & Retention</h2>
+        <p>Your contact details and project files are stored in standard business tools — primarily email, WhatsApp, and cloud storage. I do not operate a formal database of client records.</p>
+        <p>I retain project-related information for as long as is reasonably necessary — typically for the duration of the project plus a reasonable period afterwards in case of follow-up queries or disputes. Once that period has passed, I delete or anonymise the information where it is practical to do so.</p>
+        <p>If you would like your information deleted sooner, you can request this at any time by contacting me directly.</p>
+      </div>
+
+      <div class="privacy-section" id="s6">
+        <span class="section-num">Section 06</span>
+        <h2>Cookies</h2>
+        <p>This website may use minimal cookies for basic functionality and anonymised analytics. I do not use advertising cookies, tracking pixels, or third-party marketing scripts. If you prefer to browse without cookies, your browser settings allow you to disable or clear them at any time — this will not affect your ability to use the site or contact me.</p>
+      </div>
+
+      <div class="privacy-section" id="s7">
+        <span class="section-num">Section 07</span>
+        <h2>Your Rights</h2>
+        <p>You have the right to ask what personal information I hold about you, to request a correction if anything is inaccurate, and to ask me to delete it. You can exercise any of these rights simply by sending me an email. I will respond within a reasonable timeframe — typically within 7 business days.</p>
+        <p>I will never make this process difficult. If you want your information removed, just ask and I will take care of it.</p>
+      </div>
+
+      <div class="privacy-section" id="s8">
+        <span class="section-num">Section 08</span>
+        <h2>Children's Privacy</h2>
+        <p>My services are intended for adults and businesses. I do not knowingly collect personal information from anyone under the age of 18. If you believe a minor has contacted me or shared information without appropriate consent, please let me know and I will delete it promptly.</p>
+      </div>
+
+      <div class="privacy-section" id="s9">
+        <span class="section-num">Section 09</span>
+        <h2>Changes to This Policy</h2>
+        <p>If I make any meaningful changes to this Privacy Policy, I will update this page with a revised date. For active clients, significant changes will be communicated directly. Continued use of this website or my services following an update constitutes acceptance of the revised policy.</p>
+      </div>
+
+      <div class="privacy-section" id="s10">
+        <span class="section-num">Section 10</span>
+        <h2>Contact</h2>
+        <p>If you have any questions about this Privacy Policy or how I handle your information, please reach out. I'm happy to explain anything in more detail.</p>
+        <div class="info-box">
+          <p><strong>Email:</strong> hello@solomonwood.com<br>
+          <strong>WhatsApp:</strong> Available via the <a href="index.html#contact">contact page</a><br>
+          <strong>Response:</strong> Within 24 hours on business days</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Top Row -->
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Solomon<span>.</span></a>
+        <p class="footer-tagline">
+          Freelance web developer & video editor crafting clean, high-performing digital experiences.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="/about/">About</a>
+        <a href="/howiwork/">How I Work</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="footer-bottom">
+      <p>© 2026 Solomon Wood. All rights reserved.</p>
+
+      <div class="footer-legal">
+        <a href="/terms/">Terms</a>
+      <a href="/privacy&policies/">Privacy</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+<script>
+  const sections=document.querySelectorAll('.privacy-section');
+  const links=document.querySelectorAll('.toc-list a');
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=document.querySelector(`.toc-list a[href="#${e.target.id}"]`);if(a)a.classList.add('active')}})},{rootMargin:'-20% 0px -70% 0px'});
+  sections.forEach(s=>obs.observe(s));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
